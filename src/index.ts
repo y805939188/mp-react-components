@@ -49,6 +49,8 @@ import { DrawerContextProvider } from './components/data-display/Drawer/DrawerCo
 import { DrawerTrigger } from './components/data-display/Drawer/DrawerTrigger';
 import { SearchUIDataTable } from './components/data-display/SearchUI/SearchUIDataTable';
 import { OpenAccessButton } from './components/publications/OpenAccessButton';
+import { PeriodicTableMode } from './components/data-entry/MaterialsInput/MaterialsInput';
+export * from './components/data-display/SearchUI/types';
 
 export {
   SelectableTable,
@@ -103,5 +105,6 @@ export {
   Drawer,
   Link,
   DrawerContextProvider,
-  DrawerTrigger
+  DrawerTrigger,
+  PeriodicTableMode
 };

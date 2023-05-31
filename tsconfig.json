@@ -1,7 +1,5 @@
 {
   "compilerOptions": {
-    "declaration": true,
-    "declarationDir": "./dist/types" /* '.d.ts' 文件输出目录 */,
     "outDir": "./dist/",
     "sourceMap": true,
     "strict": true,
@@ -14,7 +12,7 @@
     "esModuleInterop": true,
     "allowJs": true,
     "jsx": "react",
-    "lib": ["es5", "es6", "dom"],
+    "lib": ["es5", "es6", "es2017", "dom"],
     "strictNullChecks": true,
     "types": ["jest"]
   },
