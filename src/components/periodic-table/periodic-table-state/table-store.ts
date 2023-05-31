@@ -25,7 +25,7 @@ interface ElementState {
   [symbol: string]: boolean;
 }
 
-interface State {
+export interface State {
   disabledElements: ElementState;
   enabledElements: ElementState;
   hiddenElements: ElementState;
