@@ -20,7 +20,7 @@
     "test": "jest --env=jsdom",
     "lint:yaml": "yamllint ./.github/workflows/*.yml",
     "postversion": "git push && git push --tags",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook -p 8080",
     "build-storybook": "build-storybook",
     "deploy-storybook": "storybook-to-ghpages"
   },
