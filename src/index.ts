@@ -51,6 +51,10 @@ import { SearchUIDataTable } from './components/data-display/SearchUI/SearchUIDa
 import { OpenAccessButton } from './components/publications/OpenAccessButton';
 import { PeriodicTableMode } from './components/data-entry/MaterialsInput/MaterialsInput';
 export * from './components/data-display/SearchUI/types';
+export * from './components/data-display/SearchUI/utils';
+export * from './components/data-entry/MaterialsInput';
+export * from './components/data-display/SearchUI/SearchUIContextProvider';
+export * from './components/data-display/Drawer/DrawerContextProvider';
 
 export {
   SelectableTable,

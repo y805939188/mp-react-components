@@ -1,9 +1,9 @@
 {
-  "name": "dp-mp-react-components",
+  "name": "@dp-launching/mp-react-components",
   "publishConfig": {
     "access": "public"
   },
-  "version": "0.0.6",
+  "version": "0.0.3",
   "description": "",
   "main": "index.js",
   "module": "dist/index.es.js",

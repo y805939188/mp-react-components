@@ -2560,11 +2560,20 @@ interface LinkProps {
  */
 declare const Link: React$1.FC<LinkProps>;
 
+interface DrawerState {
+  activeDrawer: string | null;
+  setActiveDrawer: (value: any) => any;
+}
 /**
  * Wrap a `DrawerTrigger` component and a `Drawer` component inside a `DrawerContextProvider` to render an element (trigger) that
  * will open up a modal. Apply props to the `DrawerContextProvider`.
  */
 declare const DrawerContextProvider: React$1.FC;
+/**
+ * Custom hook for consuming the DrawerContext
+ * Must only be used by child components of DrawerContextProvider
+ */
+declare const useDrawerContext: () => DrawerState;
 
 interface Props {
   /**
@@ -2633,6 +2642,80 @@ interface OpenAccessButtonProps {
  */
 declare const OpenAccessButton: React$1.FC<OpenAccessButtonProps>;
 
+/**
+ * Check whether a filter value is considered empty or not (i.e. active or inactive)
+ */
+declare const isNotEmpty: (value: any) => boolean;
+/**
+ * Initialize filter groups to be usable within the search state.
+ * This allows options to be programatically added for symmetry filters.
+ * @param filterGroups array filter definitions nested by group
+ * @returns new array of filter groups ready to use in the state
+ */
+declare const initFilterGroups: (filterGroups: FilterGroup[]) => FilterGroup[];
+/**
+ * Update the search state's active filters.
+ * The activeFilters list is recomputed whenever a filter is modified in the UI.
+ */
+declare const getActiveFilters: (
+  filterGroups: FilterGroup[],
+  query: DecodedValueMap<QueryParamConfigMap>
+) => ActiveFilter[];
+/**
+ * Create the query param config object based on the filter definitions.
+ * This determines the keys in the query param object and assigns param types
+ * to each key to determine how the param is encoded/decoded in the URL.
+ * @param filterGroups filter definitions by nested group
+ * @param sortKey key to use for the sort param
+ * @param limitKey key to use for the result limit param
+ * @param skipKey key to use for the skip amount (which index should the range of results start from)
+ * @returns config that maps query params to param types
+ */
+declare const initQueryParams: (
+  filterGroups: FilterGroup[],
+  sortKey: string,
+  limitKey: string,
+  skipKey: string
+) => QueryParamConfigMap;
+/**
+ * Apply transformations to the query param values before sending them to the API.
+ * @param query object of query params and their values.
+ * @param filterGroups filter definitions nested by group.
+ * @param defaultQuery
+ * @returns object of query params with API-ready values.
+ */
+declare const preprocessQueryParams: (
+  query: DecodedValueMap<QueryParamConfigMap>,
+  filterGroups: FilterGroup[],
+  defaultQuery: any,
+  sortParamKey: string
+) => {};
+declare const convertMaterialsInputTypesMapToArray: (
+  map: MaterialsInputTypesMap
+) => MaterialsInputType[];
+declare const mapInputTypeToField: (
+  inputType: MaterialsInputType,
+  allowedInputTypesMap: MaterialsInputTypesMap
+) => any;
+
+/**
+ * Component that wraps all of its children in providers for SearchUIContext and SearchUIContextActions
+ * Accepts the same props as SearchUI and uses them to build the context state
+ */
+declare const SearchUIContextProvider: React$1.FC<SearchState>;
+/**
+ * Custom hook for consuming the SearchUIContext
+ * Must only be used by child components of SearchUIContextProvider
+ * The context returns one property called "state"
+ */
+declare const useSearchUIContext: () => SearchContextValue;
+/**
+ * Custom hook for consuming the SearchUIContextActions
+ * Must only be used by child components of SearchUIContextProvider
+ * The context returns one property called "actions"
+ */
+declare const useSearchUIContextActions: () => any;
+
 export {
   ActiveFilter,
   BibCard,
@@ -2667,6 +2750,8 @@ export {
   Link,
   Markdown,
   MaterialsInput,
+  MaterialsInputProps,
+  MaterialsInputType,
   Modal,
   ModalContextProvider,
   ModalTrigger,
@@ -2686,6 +2771,7 @@ export {
   SearchState,
   SearchUIContainer,
   SearchUIContainerProps,
+  SearchUIContextProvider,
   SearchUIDataHeader,
   SearchUIDataTable,
   SearchUIDataView,
@@ -2703,5 +2789,15 @@ export {
   TableFilter,
   Tabs,
   Tooltip,
-  searchUIViewsMap
+  convertMaterialsInputTypesMapToArray,
+  getActiveFilters,
+  initFilterGroups,
+  initQueryParams,
+  isNotEmpty,
+  mapInputTypeToField,
+  preprocessQueryParams,
+  searchUIViewsMap,
+  useDrawerContext,
+  useSearchUIContext,
+  useSearchUIContextActions
 };
