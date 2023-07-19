@@ -27,7 +27,7 @@ export const isNotEmpty = (value: any) => {
   if (Array.isArray(value)) {
     return value.length > 0 ? true : false;
   } else {
-    return value !== undefined && value !== null && value !== '';
+    return value !== undefined && value !== null;
   }
 };
 

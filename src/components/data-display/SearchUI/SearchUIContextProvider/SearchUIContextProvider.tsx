@@ -165,7 +165,8 @@ export const SearchUIContextProvider: React.FC<SearchState> = ({
      */
     setFilterValue: (value: any, id: string, overrideFields?: string[]) => {
       const filterIsActivating = isNotEmpty(value);
-      const newFilterValue = filterIsActivating ? value : undefined;
+      // const newFilterValue = filterIsActivating ? value : undefined;
+      const newFilterValue = value;
       const newQuery = {
         [id]: newFilterValue,
         [props.skipKey]: undefined
@@ -175,7 +176,7 @@ export const SearchUIContextProvider: React.FC<SearchState> = ({
           newQuery[field] = undefined;
         });
       }
-      if (newFilterValue != query[id]) {
+      if (newFilterValue != query[id] || newFilterValue === '') {
         setQuery(newQuery);
       }
     },
@@ -299,7 +300,6 @@ export const SearchUIContextProvider: React.FC<SearchState> = ({
           }
         }, minLoadTime);
       }
-
       setState((currentState) => {
         return { ...currentState, loading: isLoading };
       });

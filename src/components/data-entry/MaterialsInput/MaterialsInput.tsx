@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { arrayToDelimitedString, capitalize, formatFormula, pluralize } from '../utils';
 import { FaAngleDown, FaExclamationTriangle, FaQuestionCircle } from 'react-icons/fa';
 import classNames from 'classnames';
@@ -455,13 +455,16 @@ export const MaterialsInput: React.FC<MaterialsInputProps> = ({
   let periodicToggleControl: JSX.Element | null = null;
   let periodicTablePlugin: JSX.Element | undefined = undefined;
   let typeDropdown: JSX.Element | null = null;
-
+  const handleSetValue = useCallback((e) => {
+    setInputValue(e);
+    props.onSubmit && props.onSubmit(null as any, e);
+  }, []);
   const materialsInputControl = (
     <MaterialsInputBox
       value={inputValue}
       type={inputType}
       allowedInputTypes={props.allowedInputTypes as MaterialsInputType[]}
-      setValue={setInputValue}
+      setValue={handleSetValue}
       onInputTypeChange={getOnInputTypeChangeProp()}
       onFocus={getOnFocusProp}
       onBlur={getOnBlurProp}
@@ -584,10 +587,10 @@ export const MaterialsInput: React.FC<MaterialsInputProps> = ({
 
   if (props.showSubmitButton) {
     materialsInputField = (
-      <form data-testid="materials-input-form" onSubmit={(e) => handleSubmit(e)}>
+      <form data-testid="materials-input-form" onSubmit={handleSubmit}>
         <div className="field has-addons">
           {materialsInputFieldControls}
-          <div className="control">
+          {/* <div className="control">
             <button
               data-testid="materials-input-submit-button"
               className={classNames('button is-primary', {
@@ -598,7 +601,7 @@ export const MaterialsInput: React.FC<MaterialsInputProps> = ({
             >
               {props.submitButtonText}
             </button>
-          </div>
+          </div> */}
         </div>
       </form>
     );

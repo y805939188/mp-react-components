@@ -1,3 +1,19 @@
+@font-face {
+  font-family: 'materials-project';
+  src: url('./materials-project.woff');
+}
+
+.icon-fontastic-periodic-table-squares:before {
+  content: 'v';
+  font-family: 'materials-project' !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+}
+
 .mpc-materials-input {
   position: relative;
 }

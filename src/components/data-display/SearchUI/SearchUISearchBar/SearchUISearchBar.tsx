@@ -32,9 +32,8 @@ export interface SearchUISearchBarProps {
    * Keys must be one of these supported input types: "elements", "formula", "mpid", "smiles", "text."
    * Each key object must have a "field" property which maps the input type
    * to a valid data filter field in the API.
-   * 
    * e.g.
-     
+
      {
        formula: {
          field: 'formula'
@@ -63,7 +62,7 @@ export interface SearchUISearchBarProps {
    * This will display when input is in focus and empty, or when the help button is clicked.
    * Expects an array of items with the following properties:
    * "label": text to display before examples. If only "label" and no "examples", text will render as small.
-   * "examples": array of input examples. These will become clickable and will update the input value. 
+   * "examples": array of input examples. These will become clickable and will update the input value.
    * e.g.
      [
        {
@@ -121,7 +120,8 @@ export const SearchUISearchBar: React.FC<SearchUISearchBarProps> = ({
   };
 
   const handleSubmit = (e: React.FormEvent | React.MouseEvent, value?: string) => {
-    const submitValue = value || searchValue;
+    // const submitValue = value || searchValue;
+    const submitValue = value;
     const allowedFields = Object.keys(allowedInputTypesMap).map((d) => {
       return allowedInputTypesMap[d].field;
     });

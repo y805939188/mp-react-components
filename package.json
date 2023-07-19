@@ -3,7 +3,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "0.0.3",
+  "version": "0.0.6",
   "description": "",
   "main": "index.js",
   "module": "dist/index.es.js",
@@ -14,7 +14,7 @@
     "clean:bundle": "rm -rf dist && rm rollup.build.css && rm index.*",
     "clean:storybook": "rm -rf out* && rm -rf storybook-static",
     "clean": "npm run clean:bundle && npm run clean:storybook",
-    "start": "parcel src/index.html -p 80",
+    "start": "parcel src/index.html -p 8080",
     "build-prod": "parcel build src/index.html",
     "build-publish": "rollup -c",
     "test": "jest --env=jsdom",

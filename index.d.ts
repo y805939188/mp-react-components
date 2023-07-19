@@ -2388,9 +2388,8 @@ interface SearchUISearchBarProps {
      * Keys must be one of these supported input types: "elements", "formula", "mpid", "smiles", "text."
      * Each key object must have a "field" property which maps the input type
      * to a valid data filter field in the API.
-     *
      * e.g.
-       
+  
        {
          formula: {
            field: 'formula'
